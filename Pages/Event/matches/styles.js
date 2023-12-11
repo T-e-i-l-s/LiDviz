@@ -6,7 +6,7 @@ const matches = StyleSheet.create({
   matchBlock: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1b252b',
+    backgroundColor: '#1b232e',
     borderRadius: 15,
     borderWidth: 1,
     borderColor: '#3c464d',

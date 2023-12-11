@@ -20,6 +20,10 @@ export default function App({ navigation }) {
     navigation.navigate('Event')
   }
 
+  const toMatchPage = (item) => {
+    navigation.navigate('Match', {'page': 'Menu', 'matchInfo': item})
+  }
+
   return (
 
     <View style={styles.main.background}>
@@ -73,20 +77,23 @@ export default function App({ navigation }) {
                   borderRightWidth: 1,
                   borderColor: '#3c464d',
                 }]}>
-                  <Text style={styles.matches.teamName}>{item.team1.name}</Text>
                   <Text style={styles.matches.teamScore}>{item.team1.score}</Text>
+                  <Text style={styles.matches.teamName}>{item.team1.name}</Text>
                 </View>
                 
                 {/* Second team */}
                 <View style={styles.matches.teamBlock}>
-                  <Text style={styles.matches.teamName}>{item.team2.name}</Text>
                   <Text style={styles.matches.teamScore}>{item.team2.score}</Text>
+                  <Text style={styles.matches.teamName}>{item.team2.name}</Text>
                 </View>
 
               </View>
 
               {/* Button(Show match info) */}
-              <Text style={styles.matches.matchInfoBlock}>Подробнее</Text>
+              <Text style={styles.matches.matchInfoBlock} 
+              onPress={() => toMatchPage(item)}>
+                Подробнее
+              </Text>
 
             </View>
           )}/>

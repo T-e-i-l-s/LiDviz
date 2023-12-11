@@ -18,22 +18,11 @@ export default function App({ navigation }) {
   const [screen, setScreen] = useState('matches')
   const [topBlockHeight, setTopBlockHeight] = useState(0)
 
-  const events = [
-    {'title': 'Li7 league', 'type': 'football', 'begin': '01.11.2023', 'end': '20.11.2023'}
-  ]
-
-  const matches = [
-    {'team1': {'name': 'Team A', 'score': '3'}, 'team2': {'name': 'Team B', 'score': '1'}},
-    {'team1': {'name': 'Team A', 'score': '3'}, 'team2': {'name': 'Team B', 'score': '1'}},
-    {'team1': {'name': 'Team A', 'score': '3'}, 'team2': {'name': 'Team B', 'score': '1'}},
-  ]
-
   const toMenuPage = () => {
     navigation.navigate('Menu')
   }
 
   const openMatches = () => {
-    console.log(styles.navigationBar.container.height)
     setNavigationBarColor1(navigationBarColors[0])
     setNavigationBarColor2(navigationBarColors[1])
     Animated.timing(sliderPosition, {
@@ -68,7 +57,7 @@ export default function App({ navigation }) {
         {/* Top Block */}
         <View style={{width: '100%', alignItems: 'flax-start'}}
         onLayout={event =>
-          setTopBlockHeight(topBlockHeight + event.nativeEvent.layout.height)
+          setTopBlockHeight(event.nativeEvent.layout.height)
         }>
           <TouchableOpacity
           style={{width: 40, marginLeft: 20}}

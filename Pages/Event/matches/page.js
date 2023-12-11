@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { FlatList, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import styles from './styles'
+import { useNavigation } from '@react-navigation/native';
 
 export default function App() {
+  const navigation = useNavigation();
 
   const matches = [
     {'team1': {'name': 'Team A', 'score': '0'}, 'team2': {'name': 'Team D', 'score': '1'}},
@@ -11,6 +12,10 @@ export default function App() {
     {'team1': {'name': 'Team C', 'score': '4'}, 'team2': {'name': 'Team D', 'score': '5'}},
     {'team1': {'name': 'Team A', 'score': '5'}, 'team2': {'name': 'Team B', 'score': '1'}},
   ]
+
+  const toMatchPage = (item) => {
+    navigation.navigate('Match', {'page': 'Event', 'matchInfo': item})
+  }
     
   return (
 
@@ -29,28 +34,31 @@ export default function App() {
 
           {/* First team */}
           <View style={[styles.matches.teamBlock, {
-            backgroundColor: item.team1.score > item.team2.score ? '#1b252b' : '#1b252b',
+            backgroundColor: item.team1.score > item.team2.score ? '#1b232e' : '#1b232e',
             borderTopLeftRadius: 15,
             borderRightWidth: 1,
             borderColor: '#3c464d',
           }]}>
-            <Text style={styles.matches.teamName}>{item.team1.name}</Text>
             <Text style={styles.matches.teamScore}>{item.team1.score}</Text>
+            <Text style={styles.matches.teamName}>{item.team1.name}</Text>
           </View>
           
           {/* Second team */}
           <View style={[styles.matches.teamBlock,{
-            backgroundColor: item.team2.score > item.team1.score ? '#1b252b' : '#1b252b',
+            backgroundColor: item.team2.score > item.team1.score ? '#1b232e' : '#1b232e',
             borderTopRightRadius: 15,
           }]}>
-            <Text style={styles.matches.teamName}>{item.team2.name}</Text>
             <Text style={styles.matches.teamScore}>{item.team2.score}</Text>
+            <Text style={styles.matches.teamName}>{item.team2.name}</Text>
           </View>
 
         </View>
 
         {/* Button(Show match info) */}
-        <Text style={styles.matches.matchInfoBlock}>Подробнее</Text>
+        <Text style={styles.matches.matchInfoBlock}
+        onPress={() => toMatchPage(item)}>
+          Подробнее
+        </Text>
 
       </View>
     )}/>

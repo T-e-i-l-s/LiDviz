@@ -35,7 +35,7 @@ const events = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    backgroundColor: '#1b252b',
+    backgroundColor: '#1b232e',
     padding: 15,
     borderRadius: 15,
     marginBottom: 10,
@@ -69,7 +69,7 @@ const matches = StyleSheet.create({
   matchBlock: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1b252b',
+    backgroundColor: '#1b232e',
     borderRadius: 15,
     borderWidth: 1,
     borderColor: '#3c464d',
